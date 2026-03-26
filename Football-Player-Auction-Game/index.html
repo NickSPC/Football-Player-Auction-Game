@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Subasta PvP - Arma tu Once</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Subasta PvP: Jugador 1 vs Jugador 2</h1>
+        <div class="small">Posición y valor base visibles. Nombre e imagen ocultos hasta que se compre.</div>
+    </header>
+
+    <main class="container">
+        <section class="panel">
+            <div>
+                <div class="small">Presupuesto inicial (M€)</div>
+                <input id="initialBudget" type="number" min="50" max="2000" value="300">
+                <div style="margin-top:8px" class="small">(Ajusta antes de Iniciar)</div>
+                <div style="margin-top:12px">
+                    <button id="startBtn">Iniciar subasta</button>
+                    <button class="btn-ghost" id="resetBtn">Reiniciar</button>
+                    <button class="btn-ghost" id="exportBtn">Exportar JSON</button>
+                    <button class="btn-ghost" id="exportCSVBtn">Exportar CSV</button>
+                </div>
+            </div>
+            <div style="margin-top:16px" class="stat">
+                <div class="small">Ronda</div>
+                <div id="roundLabel">-</div>
+            </div>
+            <div style="margin-top:12px">
+                <div class="small">Equipos y presupuestos</div>
+                <div id="teamsContainer"></div>
+            </div>
+        </section>
+
+        <section class="auction-area">
+            <div class="player-card">
+                <div class="silhouette" id="playerImg">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z" />
+                        <path d="M4 22s1-4 8-4 8 4 8 4" />
+                        <path d="M7 13c.5-1.5 3-2 5-2s4.5.5 5 2" />
+                    </svg>
+                </div>
+                <div class="player-info">
+                    <h2 class="player-name" id="playerName">-</h2>
+                    <div class="small" id="playerMeta">Posición · Valor base</div>
+                    <div class="turn-indicator" id="turnIndicator">Turno: -</div>
+                    <div style="margin-top:10px;display:flex;gap:8px;align-items:center">
+                        <input type="number" id="bidAmount" placeholder="Oferta (M€)" />
+                        <button id="bidBtn">Pujar</button>
+                        <button class="pass" id="passBtn">Pasar</button>
+                    </div>
+                    <div style="margin-top:10px">
+                        <div class="small">Oferta actual</div>
+                        <strong id="currentBid">-</strong>
+                        <div class="small" id="currentBidder">-</div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="small">Historial</div>
+                <div class="history" id="history"></div>
+            </div>
+        </section>
+
+        <aside class="panel">
+            <div class="small">Reglas</div>
+            <ul class="small">
+                <li>Incremento mínimo: 5 M€</li>
+                <li>Posición visible, nombre e imagen ocultos hasta que se venda</li>
+                <li>VS</li>
+            </ul>
+            <button class="btn-ghost" id="showFieldBtn">Ver equipos en la cancha</button>
+        </aside>
+    </main>
+
+    <footer>Subasta PvP — mezcla de leyendas y cracks actuales</footer>
+
+    <!-- Modal -->
+    <div class="modal" id="fieldModal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeModal">&times;</span>
+            <h2 style="text-align:center">Equipos en la cancha (4-3-3)</h2>
+            <div class="fields">
+                <div class="field" id="field1">
+                    <h3>Jugador 1</h3>
+                </div>
+                <div class="field" id="field2">
+                    <h3>Jugador2</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
